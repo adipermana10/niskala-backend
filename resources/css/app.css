@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+@theme {
+    /* Palet Warna Identitas Visual Niskala (Flat 2D) */
+    --color-niskala-red: #CD2E0E;
+    --color-niskala-red-dark: #A62309;
+    --color-niskala-gray: #D5D5D5;
+    --color-niskala-orange: #F79301;
+    --color-niskala-orange-dark: #D97E00;
+    --color-niskala-dark: #1E1E1E;
+    --color-niskala-surface: #F7F7F7;
+
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Gaya Flat 2D Modern & Animasi Interaktif */
+@keyframes floatSway {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(1.5deg); }
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    70% { transform: scale(1.8); opacity: 0; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+.animate-float-2d {
+    animation: floatSway 4.5s ease-in-out infinite;
+}
+
+.hover-wobble:hover {
+    transform: translateY(-3px) rotate(-0.5deg);
+}
+
+.flat-card {
+    background-color: #FFFFFF;
+    border: 2px solid #D5D5D5;
+    border-radius: 1rem;
+    transition: all 0.22s ease;
+}
+
+.flat-card:hover {
+    border-color: #CD2E0E;
+    transform: translateY(-4px);
+}
+
+/* Penyesuaian Z-Index Peta Leaflet agar tidak menutupi Navbar */
+.leaflet-container {
+    z-index: 10 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 0.75rem !important;
+    border: 2px solid #CD2E0E !important;
+    box-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
